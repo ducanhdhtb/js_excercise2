@@ -17,13 +17,13 @@
 
 <h2>JavaScript Arrays</h2>
 
-<p>The typeof operator, when used on an array, returns object:</p>
+<p>The new ECMASCRIPT 5 method isArray returns true when used on an array:</p>
 
 <p id="demo"></p>
 
 <script>
 var fruits = ["Banana", "Orange", "Apple", "Mango"];
-document.getElementById("demo").innerHTML = typeof fruits;
+document.getElementById("demo").innerHTML = Array.isArray(fruits);
 </script>
 </body>
 </html>
