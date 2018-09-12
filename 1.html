@@ -14,17 +14,20 @@
 	 	<script type="text/javascript" src="1.js"></script>
 	</head>
 <body>
-	<script>
-		var fruits = ["Banana", "Orange", "Apple", "Mango"];
-		fruits.splice(0, 1);        // Removes the first element of fruits
-	</script>
+<h2>JavaScript Array Methods</h2>
 
+<h2>concat()</h2>
 
-<!-- The first parameter (0) defines the position where new elements should be added (spliced in).
+<p>The concat() method is used to merge (concatenate) arrays:</p>
 
-The second parameter (1) defines how many elements should be removed.
+<p id="demo"></p>
 
-The rest of the parameters are omitted. No new elements will be added. -->
+<script>
+var myGirls = ["Cecilie", "Lone"];
+var myBoys = ["Emil", "Tobias", "Linus"];
+var myChildren = myGirls.concat(myBoys);
 
+document.getElementById("demo").innerHTML = myChildren;
+</script>
 </body>
 </html>
