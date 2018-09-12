@@ -17,15 +17,17 @@
 
 <h2>JavaScript String Methods</h2>
 
-<p>The search() method returns the position of the first occurrence of a specified text in a string:</p>
+<p>The slice() method extract a part of a string
+and returns the extracted parts in a new string:</p>
 
 <p id="demo"></p>
 
 <script>
-var str = "Please locate where 'locate' occurs!";
-var pos = str.search("locate");
-document.getElementById("demo").innerHTML = pos;
+var str = "Apple, Banana, Kiwi";
+var res = str.slice(7,13);
+document.getElementById("demo").innerHTML = res; 
 </script>
+
 
 </body>
 </html>
