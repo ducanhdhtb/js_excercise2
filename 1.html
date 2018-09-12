@@ -14,18 +14,15 @@
 	 	<script type="text/javascript" src="1.js"></script>
 	</head>
 <body>
-
-
 <h2>JavaScript String Methods</h2>
 
-<p>The substr() method extract a part of a string
-and returns the extracted parts in a new string:</p>
+<p>If the first parameter is negative, the position counts from the end of the string.</p>
 
 <p id="demo"></p>
 
 <script>
 var str = "Apple, Banana, Kiwi";
-var res = str.substr(7);
+var res = str.substr(-4);
 document.getElementById("demo").innerHTML = res;
 </script>
 
