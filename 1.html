@@ -14,17 +14,16 @@
 	 	<script type="text/javascript" src="1.js"></script>
 	</head>
 <body>
-<h1 id="myH"></h1>
-<p id="myP"></p>
+<h2>JavaScript Variables</h2>
+
+<p id="demo"></p>
 
 <script>
-/*
-The code below will change
-the heading with id = "myH"
-and the paragraph with id = "myp"
-*/
-document.getElementById("myH").innerHTML = "JavaScript Comments";
-document.getElementById("myP").innerHTML = "My first paragraph.";
+var price1 = 5;
+var price2 = 6;
+var total = price1 + price2;
+document.getElementById("demo").innerHTML =
+"The total is: " + total;
 </script>
 </body>
 </html>
