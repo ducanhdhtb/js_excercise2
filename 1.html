@@ -14,22 +14,16 @@
 	 	<script type="text/javascript" src="1.js"></script>
 	</head>
 <body>
+<h2>JavaScript Functions</h2>
 
-<h2>JavaScript typeof</h2>
-<p>The typeof operator returns object for both objects, arrays, and null.</p>
-<p>The typeof operator does not return object for functions.</p>
+<p>This example calls a function which performs a calculation, and returns the result:</p>
 
 <p id="demo"></p>
-
 <script>
-document.getElementById("demo").innerHTML = 
-typeof {name:'john', age:34} + "<br>" +
-typeof [1,2,3,4] + "<br>" +
-typeof null + "<br>" +
-typeof function myFunc(){};
+	function myFunction(x1,x2){
+		return (x1*x2);
+	}
+	document.getElementById('demo').innerHTML = myFunction(4,5);
 </script>
-
-
-
 </body>
 </html>
