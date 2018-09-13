@@ -14,20 +14,21 @@
 	 	<script type="text/javascript" src="1.js"></script>
 	</head>
 <body>
-How Can it be Used
-Comparison operators can be used in conditional statements to compare values and take action depending on the result:
+<p>Input your age and click the button:</p>
 
-if (age < 18) text = "Too young";
-You will learn more about the use of conditional statements in the next chapter of this tutorial.
+<input id="age" value="18" />
 
-Logical Operators
-Logical operators are used to determine the logic between variables or values.
+<button onclick="myFunction()">Try it</button>
 
-Given that x = 6 and y = 3, the table below explains the logical operators:
+<p id="demo"></p>
 
-Operator	Description	Example	Try it
-&&	and	(x < 10 && y > 1) is true	
-||	or	(x == 5 || y == 5) is false	
-!	not	!(x == y) is true
+<script>
+function myFunction() {
+    var age, voteable;
+    age = document.getElementById("age").value;
+    voteable = (age < 18) ? "Too young":"Old enough";
+    document.getElementById("demo").innerHTML = voteable + " to vote.";
+}
+</script>
 </body>
 </html>
