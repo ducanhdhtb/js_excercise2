@@ -14,87 +14,68 @@
 	 	<script type="text/javascript" src="1.js"></script>
 	</head>
 <body>
-Properties are the most important part of any JavaScript object.
+Example
+var person = {
+    firstName: "John",
+    lastName : "Doe",
+    id       : 5566,
+    fullName : function() {
+        return this.firstName + " " + this.lastName;
+    }
+};
+The this Keyword
+In a function definition, this refers to the "owner" of the function.
 
-JavaScript Properties
-Properties are the values associated with a JavaScript object.
+In the example above, this is the person object that "owns" the fullName function.
 
-A JavaScript object is a collection of unordered properties.
+In other words, this.firstName means the firstName property of this object.
 
-Properties can usually be changed, added, and deleted, but some are read only.
+Read more about the this keyword at JS this Keyword.
 
-Accessing JavaScript Properties
-The syntax for accessing the property of an object is:
+JavaScript Methods
+JavaScript methods are actions that can be performed on objects.
 
-objectName.property          // person.age
-or
+A JavaScript method is a property containing a function definition.
 
-objectName["property"]       // person["age"]
-or
+Property	Value
+firstName	John
+lastName	Doe
+age	50
+eyeColor	blue
+fullName	function() {return this.firstName + " " + this.lastName;}
+Methods are functions stored as object properties.
 
-objectName[expression]       // x = "age"; person[x]
-The expression must evaluate to a property name.
+Accessing Object Methods
+You access an object method with the following syntax:
 
-Example 1
-person.firstname + " is " + person.age + " years old.";
-Example 2
-person["firstname"] + " is " + person["age"] + " years old.";
-JavaScript for...in Loop
-The JavaScript for...in statement loops through the properties of an object.
+objectName.methodName()
+You will typically describe fullName() as a method of the person object, and fullName as a property.
 
-Syntax
-for (variable in object) {
-    code to be executed
-}
-The block of code inside of the for...in loop will be executed once for each property.
+The fullName property will execute (as a function) when it is invoked with ().
 
-Looping through the properties of an object:
+This example accesses the fullName() method of a person object:
 
 Example
-var person = {fname:"John", lname:"Doe", age:25}; 
-
-for (x in person) {
-    txt += person[x];
-}
-Adding New Properties
-You can add new properties to an existing object by simply giving it a value.
-
-Assume that the person object already exists - you can then give it new properties:
+name = person.fullName();
+If you access the fullName property, without (), it will return the function definition:
 
 Example
-person.nationality = "English";
-You cannot use reserved words for property (or method) names. JavaScript naming rules apply.
+name = person.fullName;
+Using Built-In Methods
+This example uses the toUpperCase() method of the String object, to convert a text to uppercase:
 
-Deleting Properties
-The delete keyword deletes a property from an object:
+var message = "Hello world!";
+var x = message.toUpperCase();
+The value of x, after execution of the code above will be:
+
+HELLO WORLD!
+Adding a Method to an Object
+Adding a new method to an object is easy:
 
 Example
-var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
-delete person.age;   // or delete person["age"]; 
-The delete keyword deletes both the value of the property and the property itself.
+person.name = function () {
+    return this.firstName + " " + this.lastName;
+};
 
-After deletion, the property cannot be used before it is added back again.
-
-The delete operator is designed to be used on object properties. It has no effect on variables or functions.
-
-The delete operator should not be used on predefined JavaScript object properties. It can crash your application.
-
-Property Attributes
-All properties have a name. In addition they also have a value.
-
-The value is one of the property's attributes.
-
-Other attributes are: enumerable, configurable, and writable.
-
-These attributes define how the property can be accessed (is it readable?, is it writable?)
-
-In JavaScript, all attributes can be read, but only the value attribute can be changed (and only if the property is writable).
-
-( ECMAScript 5 has methods for both getting and setting all property attributes)
-
-Prototype Properties
-JavaScript objects inherit the properties of their prototype.
-
-The delete keyword does not delete inherited properties, but if you delete a prototype property, it will affect all objects inherited from the prototype.
 </body>
 </html>
