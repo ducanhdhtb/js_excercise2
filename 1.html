@@ -14,163 +14,132 @@
 	 	<script type="text/javascript" src="1.js"></script>
 	</head>
 <body>
-JavaScript Object Constructors
-Example
-function Person(first, last, age, eye) {
-    this.firstName = first;
-    this.lastName = last;
-    this.age = age;
-    this.eyeColor = eye;
+JavaScript Function Definitions
+JavaScript functions are defined with the function keyword.
+
+You can use a function declaration or a function expression.
+
+Function Declarations
+Earlier in this tutorial, you learned that functions are declared with the following syntax:
+
+function functionName(parameters) {
+  code to be executed
 }
-It is considered good practice to name constructor functions with an upper-case first letter.
-
-Object Types (Blueprints) (Classes)
-The examples from the previous chapters are limited. They only create single objects.
-
-Sometimes we need a "blueprint" for creating many objects of the same "type".
-
-The way to create an "object type", is to use an object constructor function.
-
-In the example above, function Person() is an object constructor function.
-
-Objects of the same type are created by calling the constructor function with the new keyword:
-
-var myFather = new Person("John", "Doe", 50, "blue");
-var myMother = new Person("Sally", "Rally", 48, "green");
-The this Keyword
-In JavaScript, the thing called this is the object that "owns" the code.
-
-The value of this, when used in an object, is the object itself.
-
-In a constructor function this does not have a value. It is a substitute for the new object. The value of this will become the new object when a new object is created.
-
-Note that this is not a variable. It is a keyword. You cannot change the value of this.
-
-Adding a Property to an Object
-Adding a new property to an existing object is easy:
+Declared functions are not executed immediately. They are "saved for later use", and will be executed later, when they are invoked (called upon).
 
 Example
-myFather.nationality = "English";
-The property will be added to myFather. Not to myMother. (Not to any other person objects).
-
-Adding a Method to an Object
-Adding a new method to an existing object is easy:
-
-Example
-myFather.name = function () {
-    return this.firstName + " " + this.lastName;
-};
-The method will be added to myFather. Not to myMother. (Not to any other person objects).
-
-Adding a Property to a Constructor
-You cannot add a new property to an object constructor the same way you add a new property to an existing object:
-
-Example
-Person.nationality = "English";
-To add a new property to a constructor, you must add it to the constructor function:
-
-Example
-function Person(first, last, age, eyecolor) {
-    this.firstName = first;
-    this.lastName = last;
-    this.age = age;
-    this.eyeColor = eyecolor;
-    this.nationality = "English";
+function myFunction(a, b) {
+    return a * b;
 }
-This way object properties can have default values.
+Semicolons are used to separate executable JavaScript statements.
+Since a function declaration is not an executable statement, it is not common to end it with a semicolon.
 
-Adding a Method to a Constructor
-Your constructor function can also define methods:
+Function Expressions
+A JavaScript function can also be defined using an expression.
+
+A function expression can be stored in a variable:
 
 Example
-function Person(first, last, age, eyecolor) {
-    this.firstName = first;
-    this.lastName = last;
-    this.age = age;
-    this.eyeColor = eyecolor;
-    this.name = function() {return this.firstName + " " + this.lastName;};
+var x = function (a, b) {return a * b};
+After a function expression has been stored in a variable, the variable can be used as a function:
+
+Example
+var x = function (a, b) {return a * b};
+var z = x(4, 3);
+The function above is actually an anonymous function (a function without a name).
+
+Functions stored in variables do not need function names. They are always invoked (called) using the variable name.
+
+The function above ends with a semicolon because it is a part of an executable statement.
+
+The Function() Constructor
+As you have seen in the previous examples, JavaScript functions are defined with the function keyword.
+
+Functions can also be defined with a built-in JavaScript function constructor called Function().
+
+Example
+var myFunction = new Function("a", "b", "return a * b");
+
+var x = myFunction(4, 3);
+You actually don't have to use the function constructor. The example above is the same as writing:
+
+Example
+var myFunction = function (a, b) {return a * b};
+
+var x = myFunction(4, 3);
+Most of the time, you can avoid using the new keyword in JavaScript.
+
+Function Hoisting
+Earlier in this tutorial, you learned about "hoisting".
+
+Hoisting is JavaScript's default behavior of moving declarations to the top of the current scope.
+
+Hoisting applies to variable declarations and to function declarations.
+
+Because of this, JavaScript functions can be called before they are declared:
+
+myFunction(5);
+
+function myFunction(y) {
+    return y * y;
 }
-You cannot add a new method to an object constructor the same way you add a new method to an existing object.
+Functions defined using an expression are not hoisted.
 
-Adding methods to an object must be done inside the constructor function:
+Self-Invoking Functions
+Function expressions can be made "self-invoking".
+
+A self-invoking expression is invoked (started) automatically, without being called.
+
+Function expressions will execute automatically if the expression is followed by ().
+
+You cannot self-invoke a function declaration.
+
+You have to add parentheses around the function to indicate that it is a function expression:
 
 Example
-function Person(firstName, lastName, age, eyeColor) {
-    this.firstName = firstName;  
-    this.lastName = lastName;
-    this.age = age;
-    this.eyeColor = eyeColor;
-    this.changeName = function (name) {
-        this.lastName = name;
-    };
+(function () {
+    var x = "Hello!!";      // I will invoke myself
+})();
+The function above is actually an anonymous self-invoking function (function without name).
+
+Functions Can Be Used as Values
+JavaScript functions can be used as values:
+
+Example
+function myFunction(a, b) {
+    return a * b;
 }
-The changeName() function assigns the value of name to the person's lastName property.
 
-Now You Can Try:
-myMother.changeName("Doe");
-JavaScript knows which person you are talking about by "substituting" this with myMother.
-
-Built-in JavaScript Constructors
-JavaScript has built-in constructors for native objects:
+var x = myFunction(4, 3);
+JavaScript functions can be used in expressions:
 
 Example
-var x1 = new Object();    // A new Object object
-var x2 = new String();    // A new String object
-var x3 = new Number();    // A new Number object
-var x4 = new Boolean();   // A new Boolean object
-var x5 = new Array();     // A new Array object
-var x6 = new RegExp();    // A new RegExp object
-var x7 = new Function();  // A new Function object
-var x8 = new Date();      // A new Date object
-The Math() object is not in the list. Math is a global object. The new keyword cannot be used on Math.
+function myFunction(a, b) {
+    return a * b;
+}
 
-Did You Know?
-As you can see above, JavaScript has object versions of the primitive data types String, Number, and Boolean. But there is no reason to create complex objects. Primitive values are much faster.
+var x = myFunction(4, 3) * 2;
+Functions are Objects
+The typeof operator in JavaScript returns "function" for functions.
 
-ALSO:
+But, JavaScript functions can best be described as objects.
 
-Use object literals {} instead of new Object().
+JavaScript functions have both properties and methods.
 
-Use string literals "" instead of new String().
-
-Use number literals 12345 instead of new Number().
-
-Use boolean literals true / false instead of new Boolean().
-
-Use array literals [] instead of new Array().
-
-Use pattern literals /()/ instead of new RegExp().
-
-Use function expressions () {} instead of new Function().
+The arguments.length property returns the number of arguments received when the function was invoked:
 
 Example
-var x1 = {};            // new object
-var x2 = "";            // new primitive string
-var x3 = 0;             // new primitive number
-var x4 = false;         // new primitive boolean
-var x5 = [];            // new array object
-var x6 = /()/           // new regexp object
-var x7 = function(){};  // new function object
-String Objects
-Normally, strings are created as primitives: var firstName = "John"
+function myFunction(a, b) {
+    return arguments.length;
+}
+The toString() method returns the function as a string:
 
-But strings can also be created as objects using the new keyword: var firstName = new String("John")
+Example
+function myFunction(a, b) {
+    return a * b;
+}
 
-Learn why strings should not be created as object in the chapter JS Strings.
-
-Number Objects
-Normally, numbers are created as primitives: var x = 123
-
-But numbers can also be created as objects using the new keyword: var x = new Number(123)
-
-Learn why numbers should not be created as object in the chapter JS Numbers.
-
-Boolean Objects
-Normally, booleans are created as primitives: var x = false
-
-But booleans can also be created as objects using the new keyword: var x = new Boolean(false)
-
-Learn why booleans should not be created as object in the chapter JS Booleans.
+var txt = myFunction.toString();
 
 
 </body>
