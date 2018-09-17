@@ -14,132 +14,90 @@
 	 	<script type="text/javascript" src="1.js"></script>
 	</head>
 <body>
-JavaScript Function Definitions
-JavaScript functions are defined with the function keyword.
+JavaScript Function Parameters
+A JavaScript function does not perform any checking on parameter values (arguments).
 
-You can use a function declaration or a function expression.
+Function Parameters and Arguments
+Earlier in this tutorial, you learned that functions can have parameters:
 
-Function Declarations
-Earlier in this tutorial, you learned that functions are declared with the following syntax:
-
-function functionName(parameters) {
-  code to be executed
+functionName(parameter1, parameter2, parameter3) {
+    code to be executed
 }
-Declared functions are not executed immediately. They are "saved for later use", and will be executed later, when they are invoked (called upon).
+Function parameters are the names listed in the function definition.
+
+Function arguments are the real values passed to (and received by) the function.
+
+Parameter Rules
+JavaScript function definitions do not specify data types for parameters.
+
+JavaScript functions do not perform type checking on the passed arguments.
+
+JavaScript functions do not check the number of arguments received.
+
+Parameter Defaults
+If a function is called with missing arguments (less than declared), the missing values are set to: undefined
+
+Sometimes this is acceptable, but sometimes it is better to assign a default value to the parameter:
 
 Example
-function myFunction(a, b) {
-    return a * b;
+function myFunction(x, y) {
+    if (y === undefined) {
+          y = 0;
+    } 
 }
-Semicolons are used to separate executable JavaScript statements.
-Since a function declaration is not an executable statement, it is not common to end it with a semicolon.
+If a function is called with too many arguments (more than declared), these arguments can be reached using the arguments object.
 
-Function Expressions
-A JavaScript function can also be defined using an expression.
+The Arguments Object
+JavaScript functions have a built-in object called the arguments object.
 
-A function expression can be stored in a variable:
+The argument object contains an array of the arguments used when the function was called (invoked).
 
-Example
-var x = function (a, b) {return a * b};
-After a function expression has been stored in a variable, the variable can be used as a function:
+This way you can simply use a function to find (for instance) the highest value in a list of numbers:
 
 Example
-var x = function (a, b) {return a * b};
-var z = x(4, 3);
-The function above is actually an anonymous function (a function without a name).
+x = findMax(1, 123, 500, 115, 44, 88);
 
-Functions stored in variables do not need function names. They are always invoked (called) using the variable name.
-
-The function above ends with a semicolon because it is a part of an executable statement.
-
-The Function() Constructor
-As you have seen in the previous examples, JavaScript functions are defined with the function keyword.
-
-Functions can also be defined with a built-in JavaScript function constructor called Function().
-
-Example
-var myFunction = new Function("a", "b", "return a * b");
-
-var x = myFunction(4, 3);
-You actually don't have to use the function constructor. The example above is the same as writing:
-
-Example
-var myFunction = function (a, b) {return a * b};
-
-var x = myFunction(4, 3);
-Most of the time, you can avoid using the new keyword in JavaScript.
-
-Function Hoisting
-Earlier in this tutorial, you learned about "hoisting".
-
-Hoisting is JavaScript's default behavior of moving declarations to the top of the current scope.
-
-Hoisting applies to variable declarations and to function declarations.
-
-Because of this, JavaScript functions can be called before they are declared:
-
-myFunction(5);
-
-function myFunction(y) {
-    return y * y;
+function findMax() {
+    var i;
+    var max = -Infinity;
+    for (i = 0; i < arguments.length; i++) {
+        if (arguments[i] > max) {
+            max = arguments[i];
+        }
+    }
+    return max;
 }
-Functions defined using an expression are not hoisted.
-
-Self-Invoking Functions
-Function expressions can be made "self-invoking".
-
-A self-invoking expression is invoked (started) automatically, without being called.
-
-Function expressions will execute automatically if the expression is followed by ().
-
-You cannot self-invoke a function declaration.
-
-You have to add parentheses around the function to indicate that it is a function expression:
+Or create a function to sum all input values:
 
 Example
-(function () {
-    var x = "Hello!!";      // I will invoke myself
-})();
-The function above is actually an anonymous self-invoking function (function without name).
+x = sumAll(1, 123, 500, 115, 44, 88);
 
-Functions Can Be Used as Values
-JavaScript functions can be used as values:
-
-Example
-function myFunction(a, b) {
-    return a * b;
+function sumAll() {
+    var i;
+    var sum = 0;
+    for (i = 0; i < arguments.length; i++) {
+        sum += arguments[i];
+    }
+    return sum;
 }
+Arguments are Passed by Value
+The parameters, in a function call, are the function's arguments.
 
-var x = myFunction(4, 3);
-JavaScript functions can be used in expressions:
+JavaScript arguments are passed by value: The function only gets to know the values, not the argument's locations.
 
-Example
-function myFunction(a, b) {
-    return a * b;
-}
+If a function changes an argument's value, it does not change the parameter's original value.
 
-var x = myFunction(4, 3) * 2;
-Functions are Objects
-The typeof operator in JavaScript returns "function" for functions.
+Changes to arguments are not visible (reflected) outside the function.
 
-But, JavaScript functions can best be described as objects.
+Objects are Passed by Reference
+In JavaScript, object references are values.
 
-JavaScript functions have both properties and methods.
+Because of this, objects will behave like they are passed by reference:
 
-The arguments.length property returns the number of arguments received when the function was invoked:
+If a function changes an object property, it changes the original value.
 
-Example
-function myFunction(a, b) {
-    return arguments.length;
-}
-The toString() method returns the function as a string:
+Changes to object properties are visible (reflected) outside the function.
 
-Example
-function myFunction(a, b) {
-    return a * b;
-}
-
-var txt = myFunction.toString();
 
 
 </body>
