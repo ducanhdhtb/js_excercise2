@@ -14,145 +14,87 @@
 	 	<script type="text/javascript" src="1.js"></script>
 	</head>
 <body>
-In JavaScript, almost "everything" is an object.
+Properties are the most important part of any JavaScript object.
 
-Booleans can be objects (if defined with the new keyword)
-Numbers can be objects (if defined with the new keyword)
-Strings can be objects (if defined with the new keyword)
-Dates are always objects
-Maths are always objects
-Regular expressions are always objects
-Arrays are always objects
-Functions are always objects
-Objects are always objects
-All JavaScript values, except primitives, are objects.
+JavaScript Properties
+Properties are the values associated with a JavaScript object.
 
-JavaScript Primitives
-A primitive value is a value that has no properties or methods.
+A JavaScript object is a collection of unordered properties.
 
-A primitive data type is data that has a primitive value.
+Properties can usually be changed, added, and deleted, but some are read only.
 
-JavaScript defines 5 types of primitive data types:
+Accessing JavaScript Properties
+The syntax for accessing the property of an object is:
 
-string
-number
-boolean
-null
-undefined
-Primitive values are immutable (they are hardcoded and therefore cannot be changed).
+objectName.property          // person.age
+or
 
-if x = 3.14, you can change the value of x. But you cannot change the value of 3.14.
+objectName["property"]       // person["age"]
+or
 
-Value	Type	Comment
-"Hello"	string	"Hello" is always "Hello"
-3.14	number	3.14 is always 3.14
-true	boolean	true is always true
-false	boolean	false is always false
-null	null (object)	null is always null
-undefined	undefined	undefined is always undefined
-Objects are Variables Containing Variables
-JavaScript variables can contain single values:
+objectName[expression]       // x = "age"; person[x]
+The expression must evaluate to a property name.
+
+Example 1
+person.firstname + " is " + person.age + " years old.";
+Example 2
+person["firstname"] + " is " + person["age"] + " years old.";
+JavaScript for...in Loop
+The JavaScript for...in statement loops through the properties of an object.
+
+Syntax
+for (variable in object) {
+    code to be executed
+}
+The block of code inside of the for...in loop will be executed once for each property.
+
+Looping through the properties of an object:
 
 Example
-var person = "John Doe";
-Objects are variables too. But objects can contain many values.
+var person = {fname:"John", lname:"Doe", age:25}; 
 
-The values are written as name : value pairs (name and value separated by a colon).
+for (x in person) {
+    txt += person[x];
+}
+Adding New Properties
+You can add new properties to an existing object by simply giving it a value.
+
+Assume that the person object already exists - you can then give it new properties:
 
 Example
-var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
-A JavaScript object is a collection of named values
+person.nationality = "English";
+You cannot use reserved words for property (or method) names. JavaScript naming rules apply.
 
-Object Properties
-The named values, in JavaScript objects, are called properties.
-
-Property	Value
-firstName	John
-lastName	Doe
-age	50
-eyeColor	blue
-Objects written as name value pairs are similar to:
-
-Associative arrays in PHP
-Dictionaries in Python
-Hash tables in C
-Hash maps in Java
-Hashes in Ruby and Perl
-Object Methods
-Methods are actions that can be performed on objects.
-
-Object properties can be both primitive values, other objects, and functions.
-
-An object method is an object property containing a function definition.
-
-Property	Value
-firstName	John
-lastName	Doe
-age	50
-eyeColor	blue
-fullName	function() {return this.firstName + " " + this.lastName;}
-JavaScript objects are containers for named values, called properties and methods.
-
-You will learn more about methods in the next chapters.
-
-Creating a JavaScript Object
-With JavaScript, you can define and create your own objects.
-
-There are different ways to create new objects:
-
-Define and create a single object, using an object literal.
-Define and create a single object, with the keyword new.
-Define an object constructor, and then create objects of the constructed type.
-In ECMAScript 5, an object can also be created with the function Object.create().
-
-Using an Object Literal
-This is the easiest way to create a JavaScript Object.
-
-Using an object literal, you both define and create an object in one statement.
-
-An object literal is a list of name:value pairs (like age:50) inside curly braces {}.
-
-The following example creates a new JavaScript object with four properties:
+Deleting Properties
+The delete keyword deletes a property from an object:
 
 Example
 var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
-Spaces and line breaks are not important. An object definition can span multiple lines:
+delete person.age;   // or delete person["age"]; 
+The delete keyword deletes both the value of the property and the property itself.
 
-Example
-var person = {
-    firstName:"John",
-    lastName:"Doe",
-    age:50,
-    eyeColor:"blue"
-};
-Using the JavaScript Keyword new
-The following example also creates a new JavaScript object with four properties:
+After deletion, the property cannot be used before it is added back again.
 
-Example
-var person = new Object();
-person.firstName = "John";
-person.lastName = "Doe";
-person.age = 50;
-person.eyeColor = "blue";
-The two examples above do exactly the same. There is no need to use new Object().
-For simplicity, readability and execution speed, use the first one (the object literal method).
+The delete operator is designed to be used on object properties. It has no effect on variables or functions.
 
-JavaScript Objects are Mutable
-Objects are mutable: They are addressed by reference, not by value.
+The delete operator should not be used on predefined JavaScript object properties. It can crash your application.
 
-If person is an object, the following statement will not create a copy of person:
+Property Attributes
+All properties have a name. In addition they also have a value.
 
-var x = person;  // This will not create a copy of person.
-The object x is not a copy of person. It is person. Both x and person are the same object.
+The value is one of the property's attributes.
 
-Any changes to x will also change person, because x and person are the same object.
+Other attributes are: enumerable, configurable, and writable.
 
-Example
-var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"}
+These attributes define how the property can be accessed (is it readable?, is it writable?)
 
-var x = person;
-x.age = 10;           // This will change both x.age and person.age
+In JavaScript, all attributes can be read, but only the value attribute can be changed (and only if the property is writable).
 
-</script>
+( ECMAScript 5 has methods for both getting and setting all property attributes)
+
+Prototype Properties
+JavaScript objects inherit the properties of their prototype.
+
+The delete keyword does not delete inherited properties, but if you delete a prototype property, it will affect all objects inherited from the prototype.
 </body>
 </html>
