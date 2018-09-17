@@ -14,153 +14,97 @@
 	 	<script type="text/javascript" src="1.js"></script>
 	</head>
 <body>
-JavaScript HTML DOM Elements
-This page teaches you how to find and access HTML elements in an HTML page.
+The HTML DOM allows JavaScript to change the content of HTML elements.
 
-Finding HTML Elements
-Often, with JavaScript, you want to manipulate HTML elements.
+Changing the HTML Output Stream
+JavaScript can create dynamic HTML content:
 
-To do so, you have to find the elements first. There are a couple of ways to do this:
+Date: Tue Sep 18 2018 02:39:02 GMT+0700 (Indochina Time)
 
-Finding HTML elements by id
-Finding HTML elements by tag name
-Finding HTML elements by class name
-Finding HTML elements by CSS selectors
-Finding HTML elements by HTML object collections
-Finding HTML Element by Id
-The easiest way to find an HTML element in the DOM, is by using the element id.
-
-This example finds the element with id="intro":
+In JavaScript, document.write() can be used to write directly to the HTML output stream:
 
 Example
-var myElement = document.getElementById("intro");
-If the element is found, the method will return the element as an object (in myElement).
+<!DOCTYPE html>
+<html>
+<body>
 
-If the element is not found, myElement will contain null.
+<script>
+document.write(Date());
+</script>
 
-Finding HTML Elements by Tag Name
-This example finds all <p> elements:
+</body>
+</html>
+Never use document.write() after the document is loaded. It will overwrite the document.
 
-Example
-var x = document.getElementsByTagName("p");
-This example finds the element with id="main", and then finds all <p> elements inside "main":
+Changing HTML Content
+The easiest way to modify the content of an HTML element is by using the innerHTML property.
 
-Example
-var x = document.getElementById("main");
-var y = x.getElementsByTagName("p");
-Finding HTML Elements by Class Name
-If you want to find all HTML elements with the same class name, use getElementsByClassName().
-This example returns a list of all elements with class="intro".
+To change the content of an HTML element, use this syntax:
 
-Example
-var x = document.getElementsByClassName("intro");
-Finding elements by class name does not work in Internet Explorer 8 and earlier versions.
-
-Finding HTML Elements by CSS Selectors
-If you want to find all HTML elements that matches a specified CSS selector (id, class names, types, attributes, values of attributes, etc), use the querySelectorAll() method.
-This example returns a list of all <p> elements with class="intro".
+document.getElementById(id).innerHTML = new HTML
+This example changes the content of a <p> element:
 
 Example
-var x = document.querySelectorAll("p.intro");
-The querySelectorAll() method does not work in Internet Explorer 8 and earlier versions.
+<html>
+<body>
 
-Finding HTML Elements by HTML Object Collections
-This example finds the form element with id="frm1", in the forms collection, and displays all element values:
+<p id="p1">Hello World!</p>
 
-Example
-var x = document.forms["frm1"];
-var text = "";
-var i;
-for (i = 0; i < x.length; i++) {
-    text += x.elements[i].value + "<br>";
-}
-document.getElementById("demo").innerHTML = text;
-The following HTML objects (and object collections) are also accessible:
+<script>
+document.getElementById("p1").innerHTML = "New text!";
+</script>
 
-document.anchors
-document.body
-document.documentElement
-document.embeds
-document.forms
-document.head
-document.images
-document.links
-document.scripts
-document.title
-JavaScript HTML DOM Elements
-This page teaches you how to find and access HTML elements in an HTML page.
+</body>
+</html>
+Example explained:
 
-Finding HTML Elements
-Often, with JavaScript, you want to manipulate HTML elements.
-
-To do so, you have to find the elements first. There are a couple of ways to do this:
-
-Finding HTML elements by id
-Finding HTML elements by tag name
-Finding HTML elements by class name
-Finding HTML elements by CSS selectors
-Finding HTML elements by HTML object collections
-Finding HTML Element by Id
-The easiest way to find an HTML element in the DOM, is by using the element id.
-
-This example finds the element with id="intro":
+The HTML document above contains a <p> element with id="p1"
+We use the HTML DOM to get the element with id="p1"
+A JavaScript changes the content (innerHTML) of that element to "New text!"
+This example changes the content of an <h1> element:
 
 Example
-var myElement = document.getElementById("intro");
-If the element is found, the method will return the element as an object (in myElement).
+<!DOCTYPE html>
+<html>
+<body>
 
-If the element is not found, myElement will contain null.
+<h1 id="id01">Old Heading</h1>
 
-Finding HTML Elements by Tag Name
-This example finds all <p> elements:
+<script>
+var element = document.getElementById("id01");
+element.innerHTML = "New Heading";
+</script>
 
-Example
-var x = document.getElementsByTagName("p");
-This example finds the element with id="main", and then finds all <p> elements inside "main":
+</body>
+</html>
+Example explained:
 
-Example
-var x = document.getElementById("main");
-var y = x.getElementsByTagName("p");
-Finding HTML Elements by Class Name
-If you want to find all HTML elements with the same class name, use getElementsByClassName().
-This example returns a list of all elements with class="intro".
+The HTML document above contains an <h1> element with id="id01"
+We use the HTML DOM to get the element with id="id01"
+A JavaScript changes the content (innerHTML) of that element to "New Heading"
+Changing the Value of an Attribute
+To change the value of an HTML attribute, use this syntax:
 
-Example
-var x = document.getElementsByClassName("intro");
-Finding elements by class name does not work in Internet Explorer 8 and earlier versions.
-
-Finding HTML Elements by CSS Selectors
-If you want to find all HTML elements that matches a specified CSS selector (id, class names, types, attributes, values of attributes, etc), use the querySelectorAll() method.
-This example returns a list of all <p> elements with class="intro".
+document.getElementById(id).attribute = new value
+This example changes the value of the src attribute of an <img> element:
 
 Example
-var x = document.querySelectorAll("p.intro");
-The querySelectorAll() method does not work in Internet Explorer 8 and earlier versions.
+<!DOCTYPE html>
+<html>
+<body>
 
-Finding HTML Elements by HTML Object Collections
-This example finds the form element with id="frm1", in the forms collection, and displays all element values:
+<img id="myImage" src="smiley.gif">
 
-Example
-var x = document.forms["frm1"];
-var text = "";
-var i;
-for (i = 0; i < x.length; i++) {
-    text += x.elements[i].value + "<br>";
-}
-document.getElementById("demo").innerHTML = text;
-The following HTML objects (and object collections) are also accessible:
+<script>
+document.getElementById("myImage").src = "landscape.jpg";
+</script>
 
-document.anchors
-document.body
-document.documentElement
-document.embeds
-document.forms
-document.head
-document.images
-document.links
-document.scripts
-document.title
+</body>
+</html>
+Example explained:
 
-
+The HTML document above contains an <img> element with id="myImage"
+We use the HTML DOM to get the element with id="myImage"
+A JavaScript changes the src attribute of that element from "smiley.gif" to "landscape.jpg"
 </body>
 </html>
